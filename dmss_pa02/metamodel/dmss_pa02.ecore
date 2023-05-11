@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="dmss_pa02" nsURI="http://www.example.org/dmss_pa02" nsPrefix="dmss_pa02">
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="SGP">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="proyectinvst" lowerBound="1"
+        upperBound="-1" eType="#//ProyectInvst" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nombreSistema" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="partner" upperBound="-1"
+        eType="#//Partner" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Partner" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="proyectinvst" lowerBound="1"
+        upperBound="-1" eType="#//ProyectInvst"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="esCoordinadorde" eType="#//ProyectInvst"
+        eOpposite="#//ProyectInvst/coordinador"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="acronimo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nombre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pais" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="empleado" upperBound="-1"
+        eType="#//Empleado" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProyectInvst">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="mes_correcto empleado_coordinador concluir"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="mes_correcto" value="&#xA;&#x9;&#x9;&#x9;&#x9;(self.mes_inicio &lt;= 12 and self.mes_inicio > 0) and (self.mes_fin &lt;= 12 and self.mes_fin > 0)"/>
+      <details key="empleado_coordinador" value="&#xA;&#x9;&#x9;&#x9;&#x9;self.coordinador.empleado->includes(self.esIP)"/>
+      <details key="concluir" value="&#xA;&#x9;&#x9;&#x9;&#x9;self.duracion>0"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="partner" lowerBound="1"
+        upperBound="-1" eType="#//Partner"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="workpackage" upperBound="-1"
+        eType="#//WorkPackage" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="acronimo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="titulo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="presupuesto" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mes_inicio" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mes_fin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ano_ini" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ano_fin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="esIP" lowerBound="1" eType="#//Empleado"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="coordinador" eType="#//Partner"
+        eOpposite="#//Partner/esCoordinadorde"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="duracion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        volatile="true" transient="true" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="derivation" value="&#xA;&#x9;&#x9;&#x9;let &#xA;             meses_proyecto : Integer = (self.ano_fin - self.ano_ini) * 12 + (self.mes_fin - self.mes_inicio)&#xA;            in &#xA;             meses_proyecto"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="presupuesto_total" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
+        volatile="true" transient="true" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="derivation" value="&#xA;         self.workpackage->iterate(wp : WorkPackage; total : ecore::EFloat = 0.0 | total + wp.presupuesto)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Empleado">
+    <eAnnotations source="http://www.obeo.fr/dsl/dnc/archetype">
+      <details key="archetype" value="Description"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="horas_maximas"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="horas_maximas" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;let&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;horas_limite : ecore::EInt=143,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;horas_reales :ecore::EInt = self.timesheep.mes.tareasrealizadas->iterate(tarea: TareasRealizadas; horas : ecore::EInt = 0 | horas + tarea.horas)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;in&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;horas_limite>=horas_reales"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="timesheep" upperBound="-1"
+        eType="#//TimeSheep" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="salrioPerH" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nombre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="investiga" upperBound="-1"
+        eType="#//ProyectInvst"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="total_employee_cost" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        volatile="true" transient="true" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="derivation" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;let totalHoras : ecore::EInt =&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;self.timesheep.mes.tareasrealizadas->iterate( tr : TareasRealizadas; horastotales : ecore::EInt=0 | horastotales + tr.horas )&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;in   totalHoras * self.salrioPerH"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="proyectinvst" lowerBound="1"
+        upperBound="-1" eType="#//ProyectInvst" derived="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WorkPackage">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="mes_comienzo mes_fin"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="mes_comienzo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; self.mes_inicio>0 and mes_inicio&lt;mes_fin"/>
+      <details key="mes_fin" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; self.mes_fin>0 and mes_fin&lt;duracion"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tarea" upperBound="-1"
+        eType="#//Tarea" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="titulo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mes_inicio" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mes_fin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="equipment" lowerBound="1"
+        upperBound="-1" eType="#//Equipment" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="presupuesto" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
+        volatile="true" transient="true" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="derivation" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;let&#xA; &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;coste_trabajadores : ecore::EFloat =0.0,&#xA; &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;coste_equipo : ecore::EFloat = self.equipment->collect(equip : Equipment | equip.coste_equipamiento)->sum()&#xA; &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;in &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; coste_trabajadores+coste_equipo"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="duracion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        volatile="true" transient="true" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="derivation" value="&#xA;&#x9;&#x9;&#x9;self.mes_fin - self.mes_inicio"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Tarea">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entreglable" upperBound="-1"
+        eType="#//Entreglable" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="presupuesto" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mes_fin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="titulo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mes_inicio" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Entreglable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tipo" eType="#//TipoEntregable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SME" eSuperTypes="#//Partner"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NPO" eSuperTypes="#//Partner"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LE" eSuperTypes="#//Partner"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NP" eSuperTypes="#//Partner"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TimeSheep">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="meses_distintos"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="meses_distintos" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;self.mes->forAll(id1, id2 |id1&lt;>id2 implies id1.Identificador&lt;>id2.Identificador)"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mes" upperBound="-1" eType="#//mes"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ano" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TipoEntregable">
+    <eLiterals name="INFORME"/>
+    <eLiterals name="SOFTWARE" value="1"/>
+    <eLiterals name="DATASET" value="2"/>
+    <eLiterals name="PROTOTIPO" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="mes">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="num_mes"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="num_mes" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;self.Identificador>0 and self.Identificador&lt;12"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Identificador" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tareasrealizadas" upperBound="-1"
+        eType="#//TareasRealizadas" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TareasRealizadas">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tarea" lowerBound="1" upperBound="-1"
+        eType="#//Tarea"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="horas" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Equipment">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID_equipamiento" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="coste_equipamiento" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+  </eClassifiers>
+</ecore:EPackage>

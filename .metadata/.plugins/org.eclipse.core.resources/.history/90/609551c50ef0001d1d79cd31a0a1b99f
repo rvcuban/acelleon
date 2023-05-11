@@ -1,0 +1,31 @@
+[comment encoding = UTF-8 /]
+[module generate('http://www.example.org/myOwnJHipster')]
+
+[template public generateAplicacion(aAplicacion : Aplicacion)]
+[comment @main/]
+
+[for (aClass:Entidad | aAplicacion.entidad)]
+[file (aClass.nombre.toUpperFirst()+'Java’, false, 'UTF-8')]
+
+
+[/file]
+[/for]
+[/template]
+
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+

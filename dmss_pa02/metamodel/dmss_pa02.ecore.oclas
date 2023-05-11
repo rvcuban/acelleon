@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pivot:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pivot="http://www.eclipse.org/ocl/2015/Pivot"
+    xsi:schemaLocation="http://www.eclipse.org/ocl/2015/Pivot java://org.eclipse.ocl.pivot.PivotPackage" name="dmss_pa02.ecore.oclas" externalURI="platform:/resource/dmss_pa02/metamodel/dmss_pa02.ecore.oclas">
+  <ownedImports name="ecore" importedNamespace="pivot:Package http://www.eclipse.org/emf/2002/Ecore.oclas#P.ecore"/>
+  <ownedPackages xmi:id="P.dmss_pa02" name="dmss_pa02" URI="http://www.example.org/dmss_pa02" nsPrefix="dmss_pa02">
+    <ownedClasses xmi:id="T.dmss_pa02.SGP" name="SGP" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclElement">
+      <ownedProperties xmi:id="p.dmss_pa02.SGP.proyectinvst" name="proyectinvst" type="#//@ownedPackages.1/@ownedClasses.0" isComposite="true"
+          opposite="#p.dmss_pa02.ProyectInvst.SGP"/>
+      <ownedProperties xmi:id="p.dmss_pa02.SGP.nombreSistema" name="nombreSistema" isRequired="false" type="pivot:PrimitiveType http://www.eclipse.org/ocl/2015/Library.oclas#String"/>
+      <ownedProperties xmi:id="p.dmss_pa02.SGP.partner" name="partner" type="#//@ownedPackages.1/@ownedClasses.1" isComposite="true" opposite="#p.dmss_pa02.Partner.SGP"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="T.dmss_pa02.Partner" name="Partner" isAbstract="true" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclElement">
+      <ownedProperties xmi:id="p.dmss_pa02.Partner.proyectinvst" name="proyectinvst" type="#//@ownedPackages.1/@ownedClasses.0" opposite="#p.dmss_pa02.ProyectInvst.Partner"/>
+      <ownedProperties xmi:id="p.dmss_pa02.Partner.esCoordinadorde" name="esCoordinadorde" isRequired="false" type="#T.dmss_pa02.ProyectInvst"
+          opposite="#p.dmss_pa02.ProyectInvst.coordinador"/>
+      <ownedProperties xmi:id="p.dmss_pa02.Partner.acronimo" name="acronimo" isRequired="false" type="pivot:PrimitiveType http://www.eclipse.org/ocl/2015/Library.oclas#String"/>
+      <ownedProperties xmi:id="p.dmss_pa02.Partner.nombre" name="nombre" isRequired="false" type="pivot:PrimitiveType http://www.eclipse.org/ocl/2015/Library.oclas#String"/>
+      <ownedProperties xmi:id="p.dmss_pa02.Partner.pais" name="pais" isRequired="false" type="pivot:PrimitiveType http://www.eclipse.org/ocl/2015/Library.oclas#String"/>
+      <ownedProperties xmi:id="p.dmss_pa02.Partner.empleado" name="empleado" type="#//@ownedPackages.1/@ownedClasses.2" isComposite="true"
+          opposite="#p.dmss_pa02.Empleado.Partner"/>
+      <ownedProperties xmi:id="p.dmss_pa02.Partner.ProyectInvst" name="ProyectInvst" type="#//@ownedPackages.1/@ownedClasses.3" isImplicit="true"
+          opposite="#p.dmss_pa02.ProyectInvst.partner"/>
+      <ownedProperties xmi:id="p.dmss_pa02.Partner.SGP" name="SGP" isRequired="false" type="#T.dmss_pa02.SGP" isImplicit="true" opposite="#p.dmss_pa02.SGP.partner"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="T.dmss_pa02.ProyectInvst" name="ProyectInvst" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclElement">
+      <ownedInvariants xmi:id="cidmss_pa02.ProyectInvst.mes_correcto" name="mes_correcto">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="&#xA;&#x9;&#x9;&#x9;&#x9;self.mes_inicio&lt;=12 and self.mes_inicio>0 and  self.mes_fin&lt;=12 and self.mes_fin>0"/>
+      </ownedInvariants>
+      <ownedProperties xmi:id="p.dmss_pa02.ProyectInvst.partner" name="partner" type="#//@ownedPackages.1/@ownedClasses.4" opposite="#p.dmss_pa02.Partner.ProyectInvst"/>
+      <ownedProperties xmi:id="p.dmss_pa02.ProyectInvst.workpackage" name="workpackage" type="#//@ownedPackages.1/@ownedClasses.5" isComposite="true"
+          opposite="#p.dmss_pa02.WorkPackage.ProyectInvst"/>
+      <ownedProperties xmi:id="p.dmss_pa02.ProyectInvst.acronimo" name="acronimo" isRequired="false" type="pivot:PrimitiveType http://www.eclipse.org/ocl/2015/Library.oclas#String"/>
+      <ownedProperties xmi:id="p.dmss_pa02.ProyectInvst.titulo" name="titulo" isRequired="false" type="pivot:PrimitiveType http://www.eclipse.org/ocl/2015/Library.oclas#String"/>
+      <ownedProperties xmi:id="p.dmss_pa02.ProyectInvst.presupuesto" name="presupuesto" isRequired="false" type="pivot:DataType http://www.eclipse.org/emf/2002/Ecore.oclas#T.ecore.EInt"/>
+      <ownedProperties xmi:id="p.dmss_pa02.ProyectInvst.mes_inicio" name="mes_inicio" isRequired="false" type="pivot:DataType http://www.eclipse.org/emf/2002/Ecore.oclas#T.ecore.EInt"/>
+      <ownedProperties xmi:id="p.dmss_pa02.ProyectInvst.mes_fin" name="mes_fin" isRequired="false" type="pivot:DataType http://www.eclipse.org/emf/2002/Ecore.oclas#T.ecore.EInt"/>
+      <ownedProperties xmi:id="p.dmss_pa02.ProyectInvst.ano_ini" name="ano_ini" isRequired="false" type="pivot:DataType http://www.eclipse.org/emf/2002/Ecore.oclas#T.ecore.EInt"/>
+      <ownedProperties xmi:id="p.dmss_pa02.ProyectInvst.ano_fin" name="ano_fin" isRequired="false" type="pivot:DataType http://www.eclipse.org/emf/2002/Ecore.oclas#T.ecore.EInt"/>
+      <ownedProperties xmi:id="p.dmss_pa02.ProyectInvst.esIP" name="esIP" type="#T.dmss_pa02.Empleado" opposite="#p.dmss_pa02.Empleado.ProyectInvst"/>
+      <ownedProperties xmi:id="p.dmss_pa02.ProyectInvst.coordinador" name="coordinador" isRequired="false" type="#T.dmss_pa02.Partner"
+          opposite="#p.dmss_pa02.Partner.esCoordinadorde"/>
+      <ownedProperties xmi:id="p.dmss_pa02.ProyectInvst.duracion" name="duracion" isRequired="false" type="pivot:DataType http://www.eclipse.org/emf/2002/Ecore.oclas#T.ecore.EInt"
+          isDerived="true" isTransient="true" isVolatile="true">
+        <ownedExpression xsi:type="pivot:ExpressionInOCL" body="&#xA;&#x9;&#x9;&#x9;let &#xA;             meses_proyecto : Integer = (self.ano_fin - self.ano_ini) * 12 + (self.mes_fin - self.mes_inicio)&#xA;            in &#xA;             meses_proyecto"/>
+      </ownedProperties>
+      <ownedProperties xmi:id="p.dmss_pa02.ProyectInvst.presupuesto_total" name="presupuesto_total" isRequired="false" type="pivot:DataType http://www.eclipse.org/emf/2002/Ecore.oclas#T.ecore.EFloat"
+          isDerived="true" isTransient="true" isVolatile="true">
+        <ownedExpression xsi:type="pivot:ExpressionInOCL" body="&#xA;         self.workpackage->iterate(wp : WorkPackage; total : ecore::EFloat = 0.0 | total + wp.presupuesto)"/>
+      </ownedProperties>
+      <ownedProperties xmi:id="p.dmss_pa02.ProyectInvst.SGP" name="SGP" isRequired="false" type="#T.dmss_pa02.SGP" isImplicit="true" opposite="#p.dmss_pa02.SGP.proyectinvst"/>
+      <ownedProperties xmi:id="p.dmss_pa02.ProyectInvst.Partner" name="Partner" type="#//@ownedPackages.1/@ownedClasses.6" isImplicit="true"
+          opposite="#p.dmss_pa02.Partner.proyectinvst"/>
+      <ownedProperties name="Empleado" type="#//@ownedPackages.1/@ownedClasses.7" isImplicit="true" opposite="#p.dmss_pa02.Empleado.investiga"/>
+      <ownedProperties name="Empleado" type="#//@ownedPackages.1/@ownedClasses.7" isImplicit="true" opposite="#p.dmss_pa02.Empleado.proyectinvst"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="T.dmss_pa02.Empleado" name="Empleado" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclElement">
+      <ownedProperties xmi:id="p.dmss_pa02.Empleado.timesheep" name="timesheep" type="#//@ownedPackages.1/@ownedClasses.8" isComposite="true"
+          opposite="#p.dmss_pa02.TimeSheep.Empleado"/>
+      <ownedProperties xmi:id="p.dmss_pa02.Empleado.salrioPerH" name="salrioPerH" isRequired="false" type="pivot:DataType http://www.eclipse.org/emf/2002/Ecore.oclas#T.ecore.EInt"/>
+      <ownedProperties xmi:id="p.dmss_pa02.Empleado.nombre" name="nombre" isRequired="false" type="pivot:PrimitiveType http://www.eclipse.org/ocl/2015/Library.oclas#String"/>
+      <ownedProperties xmi:id="p.dmss_pa02.Empleado.ID" name="ID" isRequired="false" type="pivot:PrimitiveType http://www.eclipse.org/ocl/2015/Library.oclas#String"/>
+      <ownedProperties xmi:id="p.dmss_pa02.Empleado.investiga" name="investiga" type="#//@ownedPackages.1/@ownedClasses.9" opposite="#//@ownedPackages.0/@ownedClasses.2/@ownedProperties.15"/>
+      <ownedProperties xmi:id="p.dmss_pa02.Empleado.total_employee_cost" name="total_employee_cost" isRequired="false" type="pivot:DataType http://www.eclipse.org/emf/2002/Ecore.oclas#T.ecore.EInt"
+          isDerived="true" isTransient="true" isVolatile="true">
+        <ownedExpression xsi:type="pivot:ExpressionInOCL" body="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;let totalHoras : ecore::EInt =&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;self.timesheep.mes.tareasrealizadas->iterate( tr : TareasRealizadas; horastotales : ecore::EInt=0 | horastotales + tr.horas )&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;in   totalHoras * self.salrioPerH"/>
+      </ownedProperties>
+      <ownedProperties xmi:id="p.dmss_pa02.Empleado.proyectinvst" name="proyectinvst" type="#//@ownedPackages.1/@ownedClasses.0" isDerived="true"
+          opposite="#//@ownedPackages.0/@ownedClasses.2/@ownedProperties.16"/>
+      <ownedProperties xmi:id="p.dmss_pa02.Empleado.Partner" name="Partner" isRequired="false" type="#T.dmss_pa02.Partner" isImplicit="true"
+          opposite="#p.dmss_pa02.Partner.empleado"/>
+      <ownedProperties xmi:id="p.dmss_pa02.Empleado.ProyectInvst" name="ProyectInvst" type="#//@ownedPackages.1/@ownedClasses.3" isImplicit="true"
+          opposite="#p.dmss_pa02.ProyectInvst.esIP"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="T.dmss_pa02.WorkPackage" name="WorkPackage" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclElement">
+      <ownedProperties xmi:id="p.dmss_pa02.WorkPackage.tarea" name="tarea" type="#//@ownedPackages.1/@ownedClasses.10" isComposite="true"
+          opposite="#p.dmss_pa02.Tarea.WorkPackage"/>
+      <ownedProperties xmi:id="p.dmss_pa02.WorkPackage.equipment" name="equipment" type="#//@ownedPackages.1/@ownedClasses.11" isComposite="true"
+          opposite="#p.dmss_pa02.Equipment.WorkPackage"/>
+      <ownedProperties xmi:id="p.dmss_pa02.WorkPackage.titulo" name="titulo" isRequired="false" type="pivot:PrimitiveType http://www.eclipse.org/ocl/2015/Library.oclas#String"/>
+      <ownedProperties xmi:id="p.dmss_pa02.WorkPackage.ID" name="ID" isRequired="false" type="pivot:PrimitiveType http://www.eclipse.org/ocl/2015/Library.oclas#String"/>
+      <ownedProperties xmi:id="p.dmss_pa02.WorkPackage.mes_inicio" name="mes_inicio" isRequired="false" type="pivot:DataType http://www.eclipse.org/emf/2002/Ecore.oclas#T.ecore.EInt"/>
+      <ownedProperties xmi:id="p.dmss_pa02.WorkPackage.mes_fin" name="mes_fin" isRequired="false" type="pivot:DataType http://www.eclipse.org/emf/2002/Ecore.oclas#T.ecore.EInt"/>
+      <ownedProperties xmi:id="p.dmss_pa02.WorkPackage.presupuesto" name="presupuesto" isRequired="false" type="pivot:DataType http://www.eclipse.org/emf/2002/Ecore.oclas#T.ecore.EFloat"
+          isDerived="true" isTransient="true" isVolatile="true">
+        <ownedExpression xsi:type="pivot:ExpressionInOCL" body="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;let&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; totalPresupuesto : ecore::EFloat =0,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; coste_trabajadores : ecore::EFloat =0,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; coste_equipo : ecore::EFloat = self.equipment->iterate(equip : Equipment ; costoTotal : ecore::EFloat=0.0 | costoTotal+equip.coste_equipamiento)&#xA;            &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;in &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; totalPresupuesto=(coste_trabajadores+coste_equipo)"/>
+      </ownedProperties>
+      <ownedProperties xmi:id="p.dmss_pa02.WorkPackage.duracion" name="duracion" isRequired="false" type="pivot:DataType http://www.eclipse.org/emf/2002/Ecore.oclas#T.ecore.EInt"
+          isDerived="true" isTransient="true" isVolatile="true">
+        <ownedExpression xsi:type="pivot:ExpressionInOCL" body="&#xA;&#x9;&#x9;&#x9;self.mes_fin - self.mes_inicio"/>
+      </ownedProperties>
+      <ownedProperties xmi:id="p.dmss_pa02.WorkPackage.ProyectInvst" name="ProyectInvst" isRequired="false" type="#T.dmss_pa02.ProyectInvst"
+          isImplicit="true" opposite="#p.dmss_pa02.ProyectInvst.workpackage"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="T.dmss_pa02.Tarea" name="Tarea" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclElement">
+      <ownedProperties xmi:id="p.dmss_pa02.Tarea.entreglable" name="entreglable" type="#//@ownedPackages.1/@ownedClasses.12" isComposite="true"
+          opposite="#p.dmss_pa02.Entreglable.Tarea"/>
+      <ownedProperties xmi:id="p.dmss_pa02.Tarea.presupuesto" name="presupuesto" isRequired="false" type="pivot:DataType http://www.eclipse.org/emf/2002/Ecore.oclas#T.ecore.EFloat"/>
+      <ownedProperties xmi:id="p.dmss_pa02.Tarea.mes_fin" name="mes_fin" isRequired="false" type="pivot:DataType http://www.eclipse.org/emf/2002/Ecore.oclas#T.ecore.EInt"/>
+      <ownedProperties xmi:id="p.dmss_pa02.Tarea.ID" name="ID" isRequired="false" type="pivot:PrimitiveType http://www.eclipse.org/ocl/2015/Library.oclas#String"/>
+      <ownedProperties xmi:id="p.dmss_pa02.Tarea.titulo" name="titulo" isRequired="false" type="pivot:PrimitiveType http://www.eclipse.org/ocl/2015/Library.oclas#String"/>
+      <ownedProperties xmi:id="p.dmss_pa02.Tarea.mes_inicio" name="mes_inicio" isRequired="false" type="pivot:DataType http://www.eclipse.org/emf/2002/Ecore.oclas#T.ecore.EInt"/>
+      <ownedProperties xmi:id="p.dmss_pa02.Tarea.TareasRealizadas" name="TareasRealizadas" type="#//@ownedPackages.1/@ownedClasses.13"
+          isImplicit="true" opposite="#p.dmss_pa02.TareasRealizadas.tarea"/>
+      <ownedProperties xmi:id="p.dmss_pa02.Tarea.WorkPackage" name="WorkPackage" isRequired="false" type="#T.dmss_pa02.WorkPackage" isImplicit="true"
+          opposite="#p.dmss_pa02.WorkPackage.tarea"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="T.dmss_pa02.Entreglable" name="Entreglable" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclElement">
+      <ownedProperties xmi:id="p.dmss_pa02.Entreglable.ID" name="ID" isRequired="false" type="pivot:PrimitiveType http://www.eclipse.org/ocl/2015/Library.oclas#String"/>
+      <ownedProperties xmi:id="p.dmss_pa02.Entreglable.mes" name="mes" isRequired="false" type="pivot:DataType http://www.eclipse.org/emf/2002/Ecore.oclas#T.ecore.EInt"/>
+      <ownedProperties xmi:id="p.dmss_pa02.Entreglable.tipo" name="tipo" isRequired="false" type="#T.dmss_pa02.TipoEntregable"/>
+      <ownedProperties xmi:id="p.dmss_pa02.Entreglable.Tarea" name="Tarea" isRequired="false" type="#T.dmss_pa02.Tarea" isImplicit="true"
+          opposite="#p.dmss_pa02.Tarea.entreglable"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="T.dmss_pa02.SME" name="SME" superClasses="#T.dmss_pa02.Partner"/>
+    <ownedClasses xmi:id="T.dmss_pa02.NPO" name="NPO" superClasses="#T.dmss_pa02.Partner"/>
+    <ownedClasses xmi:id="T.dmss_pa02.LE" name="LE" superClasses="#T.dmss_pa02.Partner"/>
+    <ownedClasses xmi:id="T.dmss_pa02.NP" name="NP" superClasses="#T.dmss_pa02.Partner"/>
+    <ownedClasses xmi:id="T.dmss_pa02.TimeSheep" name="TimeSheep" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclElement">
+      <ownedProperties xmi:id="p.dmss_pa02.TimeSheep.mes" name="mes" type="#//@ownedPackages.1/@ownedClasses.14" isComposite="true" opposite="#p.dmss_pa02.mes.TimeSheep"/>
+      <ownedProperties xmi:id="p.dmss_pa02.TimeSheep.ano" name="ano" isRequired="false" type="pivot:DataType http://www.eclipse.org/emf/2002/Ecore.oclas#T.ecore.EInt"/>
+      <ownedProperties xmi:id="p.dmss_pa02.TimeSheep.Empleado" name="Empleado" isRequired="false" type="#T.dmss_pa02.Empleado" isImplicit="true"
+          opposite="#p.dmss_pa02.Empleado.timesheep"/>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:Enumeration" xmi:id="T.dmss_pa02.TipoEntregable" name="TipoEntregable" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclEnumeration">
+      <ownedLiterals xmi:id="e.dmss_pa02.TipoEntregable.INFORME" name="INFORME"/>
+      <ownedLiterals xmi:id="e.dmss_pa02.TipoEntregable.SOFTWARE" name="SOFTWARE" value="1"/>
+      <ownedLiterals xmi:id="e.dmss_pa02.TipoEntregable.DATASET" name="DATASET" value="2"/>
+      <ownedLiterals xmi:id="e.dmss_pa02.TipoEntregable.PROTOTIPO" name="PROTOTIPO" value="3"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="T.dmss_pa02.mes" name="mes" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclElement">
+      <ownedProperties xmi:id="p.dmss_pa02.mes.Identificador" name="Identificador" isRequired="false" type="pivot:DataType http://www.eclipse.org/emf/2002/Ecore.oclas#T.ecore.EInt"/>
+      <ownedProperties xmi:id="p.dmss_pa02.mes.tareasrealizadas" name="tareasrealizadas" type="#//@ownedPackages.1/@ownedClasses.15" isComposite="true"
+          opposite="#p.dmss_pa02.TareasRealizadas.mes"/>
+      <ownedProperties xmi:id="p.dmss_pa02.mes.TimeSheep" name="TimeSheep" isRequired="false" type="#T.dmss_pa02.TimeSheep" isImplicit="true"
+          opposite="#p.dmss_pa02.TimeSheep.mes"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="T.dmss_pa02.TareasRealizadas" name="TareasRealizadas" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclElement">
+      <ownedProperties xmi:id="p.dmss_pa02.TareasRealizadas.tarea" name="tarea" type="#//@ownedPackages.1/@ownedClasses.16" opposite="#p.dmss_pa02.Tarea.TareasRealizadas"/>
+      <ownedProperties xmi:id="p.dmss_pa02.TareasRealizadas.horas" name="horas" isRequired="false" type="pivot:DataType http://www.eclipse.org/emf/2002/Ecore.oclas#T.ecore.EInt"/>
+      <ownedProperties xmi:id="p.dmss_pa02.TareasRealizadas.mes" name="mes" isRequired="false" type="#T.dmss_pa02.mes" isImplicit="true"
+          opposite="#p.dmss_pa02.mes.tareasrealizadas"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="T.dmss_pa02.Equipment" name="Equipment" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclElement">
+      <ownedProperties xmi:id="p.dmss_pa02.Equipment.ID_equipamiento" name="ID_equipamiento" isRequired="false" type="pivot:PrimitiveType http://www.eclipse.org/ocl/2015/Library.oclas#String"/>
+      <ownedProperties xmi:id="p.dmss_pa02.Equipment.coste_equipamiento" name="coste_equipamiento" isRequired="false" type="pivot:DataType http://www.eclipse.org/emf/2002/Ecore.oclas#T.ecore.EFloat"/>
+      <ownedProperties xmi:id="p.dmss_pa02.Equipment.WorkPackage" name="WorkPackage" isRequired="false" type="#T.dmss_pa02.WorkPackage"
+          isImplicit="true" opposite="#p.dmss_pa02.WorkPackage.equipment"/>
+    </ownedClasses>
+  </ownedPackages>
+  <ownedPackages xmi:id="P.$$" name="$$" URI="http://www.eclipse.org/ocl/2015/Orphanage" nsPrefix="orphanage">
+    <ownedClasses xsi:type="pivot:OrderedSetType" name="OrderedSet" superClasses="#//@ownedPackages.1/@ownedClasses.17 #//@ownedPackages.1/@ownedClasses.18"
+        elementType="#T.dmss_pa02.ProyectInvst" isNullFree="true" lower="1">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.ProyectInvst" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..OrderedSetT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" name="OrderedSet" superClasses="#//@ownedPackages.1/@ownedClasses.19 #//@ownedPackages.1/@ownedClasses.20"
+        elementType="#T.dmss_pa02.Partner" isNullFree="true">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.Partner" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..OrderedSetT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" name="OrderedSet" superClasses="#//@ownedPackages.1/@ownedClasses.21 #//@ownedPackages.1/@ownedClasses.22"
+        elementType="#T.dmss_pa02.Empleado" isNullFree="true">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.Empleado" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..OrderedSetT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" name="Bag" superClasses="#//@ownedPackages.1/@ownedClasses.23" elementType="#T.dmss_pa02.ProyectInvst">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.ProyectInvst" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..BagT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" name="OrderedSet" superClasses="#//@ownedPackages.1/@ownedClasses.19 #//@ownedPackages.1/@ownedClasses.20"
+        elementType="#T.dmss_pa02.Partner" isNullFree="true" lower="1">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.Partner" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..OrderedSetT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" name="OrderedSet" superClasses="#//@ownedPackages.1/@ownedClasses.24 #//@ownedPackages.1/@ownedClasses.25"
+        elementType="#T.dmss_pa02.WorkPackage" isNullFree="true">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.WorkPackage" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..OrderedSetT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" name="Bag" superClasses="#//@ownedPackages.1/@ownedClasses.26" elementType="#T.dmss_pa02.Partner">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.Partner" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..BagT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" name="Bag" superClasses="#//@ownedPackages.1/@ownedClasses.27" elementType="#T.dmss_pa02.Empleado">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.Empleado" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..BagT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" name="OrderedSet" superClasses="#//@ownedPackages.1/@ownedClasses.28 #//@ownedPackages.1/@ownedClasses.29"
+        elementType="#T.dmss_pa02.TimeSheep" isNullFree="true">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.TimeSheep" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..OrderedSetT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" name="OrderedSet" superClasses="#//@ownedPackages.1/@ownedClasses.17 #//@ownedPackages.1/@ownedClasses.18"
+        elementType="#T.dmss_pa02.ProyectInvst" isNullFree="true">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.ProyectInvst" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..OrderedSetT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" name="OrderedSet" superClasses="#//@ownedPackages.1/@ownedClasses.30 #//@ownedPackages.1/@ownedClasses.31"
+        elementType="#T.dmss_pa02.Tarea" isNullFree="true">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.Tarea" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..OrderedSetT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" name="OrderedSet" superClasses="#//@ownedPackages.1/@ownedClasses.32 #//@ownedPackages.1/@ownedClasses.33"
+        elementType="#T.dmss_pa02.Equipment" isNullFree="true">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.Equipment" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..OrderedSetT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" name="OrderedSet" superClasses="#//@ownedPackages.1/@ownedClasses.34 #//@ownedPackages.1/@ownedClasses.35"
+        elementType="#T.dmss_pa02.Entreglable" isNullFree="true">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.Entreglable" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..OrderedSetT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" name="Bag" superClasses="#//@ownedPackages.1/@ownedClasses.36" elementType="#T.dmss_pa02.TareasRealizadas">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.TareasRealizadas" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..BagT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" name="OrderedSet" superClasses="#//@ownedPackages.1/@ownedClasses.37 #//@ownedPackages.1/@ownedClasses.38"
+        elementType="#T.dmss_pa02.mes" isNullFree="true">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.mes" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..OrderedSetT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" name="OrderedSet" superClasses="#//@ownedPackages.1/@ownedClasses.39 #//@ownedPackages.1/@ownedClasses.40"
+        elementType="#T.dmss_pa02.TareasRealizadas" isNullFree="true">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.TareasRealizadas" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..OrderedSetT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" name="OrderedSet" superClasses="#//@ownedPackages.1/@ownedClasses.30 #//@ownedPackages.1/@ownedClasses.31"
+        elementType="#T.dmss_pa02.Tarea" isNullFree="true" lower="1">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.Tarea" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..OrderedSetT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="OrderedCollection" superClasses="#//@ownedPackages.1/@ownedClasses.23" elementType="#T.dmss_pa02.ProyectInvst">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.ProyectInvst" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..OrderedCollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="UniqueCollection" superClasses="#//@ownedPackages.1/@ownedClasses.23" elementType="#T.dmss_pa02.ProyectInvst">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.ProyectInvst" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..UniqueCollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="OrderedCollection" superClasses="#//@ownedPackages.1/@ownedClasses.26" elementType="#T.dmss_pa02.Partner">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.Partner" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..OrderedCollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="UniqueCollection" superClasses="#//@ownedPackages.1/@ownedClasses.26" elementType="#T.dmss_pa02.Partner">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.Partner" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..UniqueCollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="OrderedCollection" superClasses="#//@ownedPackages.1/@ownedClasses.27" elementType="#T.dmss_pa02.Empleado">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.Empleado" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..OrderedCollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="UniqueCollection" superClasses="#//@ownedPackages.1/@ownedClasses.27" elementType="#T.dmss_pa02.Empleado">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.Empleado" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..UniqueCollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="Collection" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclAny"
+        elementType="#T.dmss_pa02.ProyectInvst">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.ProyectInvst" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..CollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="OrderedCollection" superClasses="#//@ownedPackages.1/@ownedClasses.41" elementType="#T.dmss_pa02.WorkPackage">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.WorkPackage" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..OrderedCollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="UniqueCollection" superClasses="#//@ownedPackages.1/@ownedClasses.41" elementType="#T.dmss_pa02.WorkPackage">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.WorkPackage" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..UniqueCollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="Collection" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclAny"
+        elementType="#T.dmss_pa02.Partner">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.Partner" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..CollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="Collection" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclAny"
+        elementType="#T.dmss_pa02.Empleado">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.Empleado" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..CollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="OrderedCollection" superClasses="#//@ownedPackages.1/@ownedClasses.42" elementType="#T.dmss_pa02.TimeSheep">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.TimeSheep" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..OrderedCollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="UniqueCollection" superClasses="#//@ownedPackages.1/@ownedClasses.42" elementType="#T.dmss_pa02.TimeSheep">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.TimeSheep" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..UniqueCollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="OrderedCollection" superClasses="#//@ownedPackages.1/@ownedClasses.43" elementType="#T.dmss_pa02.Tarea">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.Tarea" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..OrderedCollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="UniqueCollection" superClasses="#//@ownedPackages.1/@ownedClasses.43" elementType="#T.dmss_pa02.Tarea">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.Tarea" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..UniqueCollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="OrderedCollection" superClasses="#//@ownedPackages.1/@ownedClasses.44" elementType="#T.dmss_pa02.Equipment">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.Equipment" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..OrderedCollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="UniqueCollection" superClasses="#//@ownedPackages.1/@ownedClasses.44" elementType="#T.dmss_pa02.Equipment">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.Equipment" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..UniqueCollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="OrderedCollection" superClasses="#//@ownedPackages.1/@ownedClasses.45" elementType="#T.dmss_pa02.Entreglable">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.Entreglable" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..OrderedCollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="UniqueCollection" superClasses="#//@ownedPackages.1/@ownedClasses.45" elementType="#T.dmss_pa02.Entreglable">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.Entreglable" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..UniqueCollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="Collection" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclAny"
+        elementType="#T.dmss_pa02.TareasRealizadas">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.TareasRealizadas" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..CollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="OrderedCollection" superClasses="#//@ownedPackages.1/@ownedClasses.46" elementType="#T.dmss_pa02.mes">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.mes" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..OrderedCollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="UniqueCollection" superClasses="#//@ownedPackages.1/@ownedClasses.46" elementType="#T.dmss_pa02.mes">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.mes" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..UniqueCollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="OrderedCollection" superClasses="#//@ownedPackages.1/@ownedClasses.36" elementType="#T.dmss_pa02.TareasRealizadas">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.TareasRealizadas" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..OrderedCollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="UniqueCollection" superClasses="#//@ownedPackages.1/@ownedClasses.36" elementType="#T.dmss_pa02.TareasRealizadas">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.TareasRealizadas" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..UniqueCollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="Collection" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclAny"
+        elementType="#T.dmss_pa02.WorkPackage">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.WorkPackage" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..CollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="Collection" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclAny"
+        elementType="#T.dmss_pa02.TimeSheep">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.TimeSheep" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..CollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="Collection" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclAny"
+        elementType="#T.dmss_pa02.Tarea">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.Tarea" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..CollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="Collection" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclAny"
+        elementType="#T.dmss_pa02.Equipment">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.Equipment" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..CollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="Collection" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclAny"
+        elementType="#T.dmss_pa02.Entreglable">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.Entreglable" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..CollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="Collection" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclAny"
+        elementType="#T.dmss_pa02.mes">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.dmss_pa02.mes" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..CollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+  </ownedPackages>
+</pivot:Model>

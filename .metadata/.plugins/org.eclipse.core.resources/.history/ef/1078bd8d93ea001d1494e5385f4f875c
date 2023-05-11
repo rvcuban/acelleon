@@ -1,0 +1,256 @@
+[comment encoding = UTF-8 /]
+[module generate('http://www.example.org/myOwnJHipster')]
+
+
+[template public generateElement(aAplicacion : Aplicacion)]
+[comment @main/]
+
+[for (pant_contenido : PantallaContenido | 
+	aAplicacion.pantalla->select(p | p.oclIsKindOf(PantallaContenido)).oclAsType(PantallaContenido))]
+	[file (pant_contenido.id_Pantalla +'.html', false, 'UTF-8')]
+
+		<!DOCTYPE html>
+		<html lang='es'>
+		<head>
+		<meta charset="UTF-8">
+		  <title>Sistema de Gestión de Proyectos de Investigación</title>
+		</head>
+		
+		<body>
+
+			<h1>[pant_contenido.nombre/]</h1>
+			[for (articulo : Articulo | pant_contenido.articulo)]
+
+				<h2>[articulo.titulo/]</h2>
+				<p>[articulo.texto/]</p>
+
+			[/for]
+
+		</body>
+
+	[/file]
+[/for]
+
+
+
+[for (pant_encuesta : PantEncuesta| 
+	aAplicacion.pantalla->select(p | p.oclIsKindOf( PantEncuesta)).oclAsType( PantEncuesta))]
+	[file (pant_encuesta.id_Pantalla +'.html', false, 'UTF-8')]
+
+		<!DOCTYPE html>
+		<html lang='es'>
+		<head>
+		<meta charset="UTF-8">
+		  <title>Encuesta</title>
+		</head>
+		
+		<body>
+
+			<h1>[pant_encuesta.nombre/]</h1>
+	         <h2>Responda a las siguientes preguntas</h2>
+               <ul>
+                 [for (pregunta:Pregunta| pant_encuesta.pregunta->select(p | p.oclIsKindOf( RespuestaCorta)).oclAsType(RespuestaCorta))] 
+                  <li>[pregunta.id_Pregunta/]</li>
+				  <div class="form_input">
+         	      <span><input type="text" name="participation"></span>
+       			  </div>
+                 [/for]
+
+				 [for (pregunta:Pregunta| pant_encuesta.pregunta->select(p | p.oclIsKindOf(VerdaderoFalso)).oclAsType(VerdaderoFalso))] 
+                  <li>[pregunta.id_Pregunta/]</li>
+				  <form>
+       			  <input type="radio" id="verdadero" name="respuesta" value="verdadero">
+     			   <label for="verdadero">Verdadero</label><br>
+     			   <input type="radio" id="falso" name="respuesta" value="falso">
+  			       <label for="falso">Falso</label><br>
+       				 
+                    </form>
+                 [/for]
+
+ 				  [for (pregunta:Pregunta| pant_encuesta.pregunta->select(p | p.oclIsKindOf( OpcionMultiple)).oclAsType(OpcionMultiple))] 
+                  <li>[pregunta.id_Pregunta/]</li>
+				 <form>
+                      [for (opcion:Opcion| pregunta->select(p | p.oclIsKindOf( OpcionMultiple)).oclAsType(OpcionMultiple).opcion)]
+       				 <input type="checkbox" id="opcion1" name="[opcion.id_Opcion/]" value="[opcion.id_Opcion/]">
+       				 <label for="[opcion.id_Opcion/]">[opcion.id_Opcion/]</label><br>
+       				  [/for]
+                 </form>
+       			  </div>
+                 [/for]
+
+ 
+               </ul>
+		</body>
+
+	[/file]
+  
+  [file (pant_encuesta.id_Pantalla+'_resultados' +'.html', false, 'UTF-8')]
+   	<!DOCTYPE html>
+		<html lang='es'>
+		<head>
+		<meta charset="UTF-8">
+		  <title>Resultados</title>
+		</head>
+		
+		<body>
+
+			<h1>[pant_encuesta.nombre/]</h1>
+	         <h2>Resultado de la encuesta</h2>
+               <ul>
+                 [for (pregunta:Pregunta| pant_encuesta.pregunta->select(p | p.oclIsKindOf( RespuestaCorta)).oclAsType(RespuestaCorta))] 
+                  <li> pregunta: [pregunta.id_Pregunta/]</li> 
+                   <ul>
+                     <li>La respuesta correcta es:[pregunta.oclAsType(RespuestaCorta).respuesta/]</li>
+                   </ul>
+                 
+                 [/for]
+
+				 [for (pregunta:Pregunta| pant_encuesta.pregunta->select(p | p.oclIsKindOf(VerdaderoFalso)).oclAsType(VerdaderoFalso))] 
+                  <li>[pregunta.id_Pregunta/]</li>
+                   <img src="{{ url_for('static', filename='org.eclipse.acceleo.module.sample.Proyecto.main.imagenes/grafico.png') }}" alt="Descripci�n de la imagen" style="width: 400px;">
+                 [/for]
+
+ 				  [for (pregunta:Pregunta| pant_encuesta.pregunta->select(p | p.oclIsKindOf( OpcionMultiple)).oclAsType(OpcionMultiple))] 
+                  <li>[pregunta.id_Pregunta/]</li>		 
+                  
+       			  </div>
+                 [/for]
+
+ 
+               </ul>
+		</body>
+
+
+
+  [/file]
+[/for]
+
+
+[comment cuestionarios/]
+
+
+
+
+[for (pant_cuestionario : PantCuestionario| 
+	aAplicacion.pantalla->select(p | p.oclIsKindOf( PantCuestionario)).oclAsType( PantCuestionario))]
+	[file (pant_cuestionario.id_Pantalla +'.html', false, 'UTF-8')]
+
+		<!DOCTYPE html>
+		<html lang='es'>
+		<head>
+		<meta charset="UTF-8">
+		  <title>Encuesta</title>
+		</head>
+		
+		<body>
+
+			<h1>[pant_cuestionario.nombre/]</h1>
+	         <h2>Responda a las siguientes preguntas</h2>
+               <ul>
+                 [for (pregunta:Pregunta|pant_cuestionario.pregunta->select(p | p.oclIsKindOf( RespuestaCorta)).oclAsType(RespuestaCorta))] 
+                  <li>[pregunta.id_Pregunta/]</li>
+				  <div class="form_input">
+         	      <span><input type="text" name="participation"></span>
+       			  </div>
+                 [/for]
+
+				 [for (pregunta:Pregunta| pant_cuestionario.pregunta->select(p | p.oclIsKindOf(VerdaderoFalso)).oclAsType(VerdaderoFalso))] 
+                  <li>[pregunta.id_Pregunta/]</li>
+				  <form>
+       			  <input type="radio" id="verdadero" name="respuesta" value="verdadero">
+     			   <label for="verdadero">Verdadero</label><br>
+     			   <input type="radio" id="falso" name="respuesta" value="falso">
+  			       <label for="falso">Falso</label><br>
+       				 
+                    </form>
+                 [/for]
+
+ 				  [for (pregunta:Pregunta| pant_cuestionario.pregunta->select(p | p.oclIsKindOf( OpcionMultiple)).oclAsType(OpcionMultiple))] 
+                  <li>[pregunta.id_Pregunta/]</li>
+				 <form>
+                      [for (opcion:Opcion| pregunta->select(p | p.oclIsKindOf( OpcionMultiple)).oclAsType(OpcionMultiple).opcion)]
+       				 <input type="checkbox" id="opcion1" name="[opcion.id_Opcion/]" value="[opcion.id_Opcion/]">
+       				 <label for="[opcion.id_Opcion/]">[opcion.id_Opcion/]</label><br>
+       				  [/for]
+                 </form>
+       			  </div>
+                 [/for]
+
+ 
+               </ul>
+		</body>
+
+	[/file]
+  
+  [file (pant_cuestionario.id_Pantalla+'_resultados' +'.html', false, 'UTF-8')]
+   	<!DOCTYPE html>
+		<html lang='es'>
+		<head>
+		<meta charset="UTF-8">
+		  <title>Resultados</title>
+		</head>
+		
+		<body>
+
+			<h1>[pant_cuestionario.nombre/]</h1>
+	         <h2>Resultado de la encuesta</h2>
+               <ul>
+                 [for (pregunta:Pregunta| pant_cuestionario.pregunta->select(p | p.oclIsKindOf( RespuestaCorta)).oclAsType(RespuestaCorta))] 
+                  <li> pregunta: [pregunta.id_Pregunta/]</li> 
+				
+                   <ul>
+                     <li>La respuesta correcta es:[pregunta.oclAsType(RespuestaCorta).respuesta/](a esta pregunta ha contestado bien un 58.92% de las personas )</li>
+                         
+                   </ul>
+                 
+                 [/for]
+
+				 [for (pregunta:Pregunta| pant_cuestionario.pregunta->select(p | p.oclIsKindOf(VerdaderoFalso)).oclAsType(VerdaderoFalso))] 
+                  <li>[pregunta.id_Pregunta/]</li>
+                   <ul>
+                     <li>La respuesta correcta es:[pregunta.oclAsType(VerdaderoFalso).respuesta/](a esta pregunta ha contestado bien un 58.92% de las personas )</li>
+                   </ul>
+                 [/for]
+
+ 				  [for (pregunta:Pregunta| pant_cuestionario.pregunta->select(p | p.oclIsKindOf( OpcionMultiple)).oclAsType(OpcionMultiple))] 
+                  <li>[pregunta.id_Pregunta/]</li>		 
+                  
+       			  </div>
+                 [/for]
+
+ 
+               </ul>
+		</body>
+
+
+
+  [/file]
+[/for]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[/template]

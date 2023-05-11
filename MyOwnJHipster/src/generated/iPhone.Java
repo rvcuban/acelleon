@@ -1,0 +1,18 @@
+
+public class IPhone {
+
+//-----------------
+// Instance variables
+ 			private string color;
+
+
+// Getters & setters aL
+
+			public string getColor (){
+				return this.color;
+			}
+
+			public void setColor ( string color){
+				this.color=color;
+        	}
+  }

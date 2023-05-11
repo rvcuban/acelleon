@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmss_pa02:SGP
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dmss_pa02="http://www.example.org/dmss_pa02"
+    xsi:schemaLocation="http://www.example.org/dmss_pa02 ../metamodel/dmss_pa02.ecore"
+    nombreSistema="Sistema de gestion ">
+  <proyectinvst
+      partner="//@partner.1 //@partner.2"
+      acronimo="MIRoN"
+      titulo="QoS Metrics-in-the-Loop for Better Robot"
+      presupuesto="300000"
+      mes_inicio="10"
+      mes_fin="9"
+      ano_ini="2019"
+      ano_fin="2020"
+      esIP="//@partner.1/@empleado.0"
+      coordinador="//@partner.1">
+    <workpackage
+        titulo="Research &amp; Development"
+        ID="MIRoN_WP1"
+        mes_inicio="1"
+        mes_fin="12">
+      <tarea
+          presupuesto="40.0"
+          mes_fin="12"
+          ID="MIRoN_T1.1"
+          titulo="MIRoN toolchain development"
+          mes_inicio="1">
+        <entreglable
+            ID="ID2"
+            mes="2"/>
+        <entreglable
+            ID="E7"
+            mes="2"
+            tipo="DATASET"/>
+      </tarea>
+      <tarea
+          mes_fin="12"
+          ID="MIRoN_T1.2"
+          titulo="MIRoN demonstrators development"
+          mes_inicio="6">
+        <entreglable
+            ID="E8"
+            mes="3"
+            tipo="DATASET"/>
+      </tarea>
+      <equipment
+          ID_equipamiento="Equipamineto 345"
+          coste_equipamiento="40.0"/>
+    </workpackage>
+    <workpackage
+        titulo="Dissemination and communication"
+        ID="MIRoN_WP2"
+        mes_inicio="3"
+        mes_fin="12">
+      <tarea
+          mes_fin="12"
+          ID="MIRoN_T2.1"
+          titulo="Dissemination and communication"
+          mes_inicio="3">
+        <entreglable
+            ID="MIRoN_D2.1"
+            mes="12"/>
+      </tarea>
+    </workpackage>
+    <workpackage
+        titulo="Management and administration"
+        ID="MIRoN_WP3">
+      <tarea
+          mes_fin="12"
+          ID="MIRoN_T3.1"
+          titulo="Management and administration"
+          mes_inicio="1">
+        <entreglable
+            ID="MIRoN_D3.1"
+            mes="6"/>
+        <entreglable
+            ID="MIRoN_D3.2"
+            mes="12"/>
+      </tarea>
+    </workpackage>
+  </proyectinvst>
+  <proyectinvst
+      partner="//@partner.2"
+      acronimo="4IE"
+      titulo="Instituto Internacional de Investigação e Inovação do Envelhecimento"
+      presupuesto="2000000"
+      mes_inicio="2"
+      mes_fin="4"
+      ano_ini="2020"
+      ano_fin="2025"
+      coordinador="//@partner.2">
+    <workpackage
+        titulo="Investigação e Inovação do Envelhecimento"
+        ID="WP1_EE4"
+        mes_inicio="3"
+        mes_fin="6">
+      <tarea
+          mes_fin="12"
+          ID="T1.1_4IE"
+          titulo="Investigacion"
+          mes_inicio="6"/>
+    </workpackage>
+  </proyectinvst>
+  <partner xsi:type="dmss_pa02:LE"
+      proyectinvst="//@proyectinvst.0"
+      acronimo="AMW"
+      nombre="Amazon Web Service"
+      pais="Suecia"/>
+  <partner xsi:type="dmss_pa02:NPO"
+      proyectinvst="//@proyectinvst.1"
+      esCoordinadorde="//@proyectinvst.0"
+      acronimo="UEX"
+      nombre="Universidad Extremadura"
+      pais="Spain">
+    <empleado
+        nombre="Cristina Vicente-Chicote"
+        ID="CVC"
+        investiga="//@proyectinvst.0"
+        proyectinvst="//@proyectinvst.1">
+      <timesheep
+          ano="2019">
+        <mes
+            Identificador="1"/>
+        <mes
+            Identificador="2"/>
+        <mes
+            Identificador="3"/>
+        <mes
+            Identificador="4"/>
+        <mes
+            Identificador="5"/>
+        <mes
+            Identificador="6"/>
+        <mes
+            Identificador="7"/>
+        <mes
+            Identificador="8"/>
+        <mes
+            Identificador="9"/>
+        <mes
+            Identificador="10">
+          <tareasrealizadas
+              tarea="//@proyectinvst.0/@workpackage.0/@tarea.0"
+              horas="20"/>
+          <tareasrealizadas
+              tarea="//@proyectinvst.0/@workpackage.0/@tarea.1"
+              horas="30"/>
+          <tareasrealizadas
+              tarea="//@proyectinvst.1/@workpackage.0/@tarea.0"
+              horas="5"/>
+        </mes>
+        <mes
+            Identificador="11">
+          <tareasrealizadas
+              tarea="//@proyectinvst.0/@workpackage.1/@tarea.0"
+              horas="40"/>
+        </mes>
+        <mes
+            Identificador="12">
+          <tareasrealizadas
+              tarea="//@proyectinvst.0/@workpackage.2/@tarea.0"
+              horas="10"/>
+        </mes>
+      </timesheep>
+    </empleado>
+    <empleado
+        nombre="Pedro J. Clemente"
+        ID="PDJ"
+        proyectinvst="//@proyectinvst.1">
+      <timesheep
+          ano="2019">
+        <mes
+            Identificador="5">
+          <tareasrealizadas
+              tarea="//@proyectinvst.0/@workpackage.2/@tarea.0"
+              horas="100"/>
+        </mes>
+      </timesheep>
+    </empleado>
+  </partner>
+  <partner xsi:type="dmss_pa02:NP"
+      esCoordinadorde="//@proyectinvst.1"
+      acronimo="UMA"
+      nombre="Universidad_de_Málaga"
+      pais="Spain">
+    <empleado
+        nombre="Juan Jose Fernandez"
+        ID="JJF"
+        investiga="//@proyectinvst.1"
+        proyectinvst="//@proyectinvst.1"/>
+  </partner>
+</dmss_pa02:SGP>

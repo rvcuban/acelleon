@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/dmss_pa02/src" modelPluginID="dmss_pa02" modelName="Dmss_pa02"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>dmss_pa02.ecore</foreignModel>
+  <genPackages prefix="Dmss_pa02" disposableProviderFactory="true" ecorePackage="dmss_pa02.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dmss_pa02.ecore#//TipoEntregable">
+      <genEnumLiterals ecoreEnumLiteral="dmss_pa02.ecore#//TipoEntregable/INFORME"/>
+      <genEnumLiterals ecoreEnumLiteral="dmss_pa02.ecore#//TipoEntregable/SOFTWARE"/>
+      <genEnumLiterals ecoreEnumLiteral="dmss_pa02.ecore#//TipoEntregable/DATASET"/>
+      <genEnumLiterals ecoreEnumLiteral="dmss_pa02.ecore#//TipoEntregable/PROTOTIPO"/>
+    </genEnums>
+    <genClasses ecoreClass="dmss_pa02.ecore#//SGP">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dmss_pa02.ecore#//SGP/proyectinvst"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//SGP/nombreSistema"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dmss_pa02.ecore#//SGP/partner"/>
+    </genClasses>
+    <genClasses ecoreClass="dmss_pa02.ecore#//Partner">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dmss_pa02.ecore#//Partner/proyectinvst"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dmss_pa02.ecore#//Partner/esCoordinadorde"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//Partner/acronimo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//Partner/nombre"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//Partner/pais"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dmss_pa02.ecore#//Partner/empleado"/>
+    </genClasses>
+    <genClasses ecoreClass="dmss_pa02.ecore#//ProyectInvst">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dmss_pa02.ecore#//ProyectInvst/partner"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dmss_pa02.ecore#//ProyectInvst/workpackage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//ProyectInvst/acronimo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//ProyectInvst/titulo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//ProyectInvst/presupuesto"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//ProyectInvst/mes_inicio"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//ProyectInvst/mes_fin"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//ProyectInvst/ano_ini"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//ProyectInvst/ano_fin"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dmss_pa02.ecore#//ProyectInvst/esIP"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dmss_pa02.ecore#//ProyectInvst/coordinador"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//ProyectInvst/duracion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//ProyectInvst/presupuesto_total"/>
+    </genClasses>
+    <genClasses ecoreClass="dmss_pa02.ecore#//Empleado">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dmss_pa02.ecore#//Empleado/timesheep"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//Empleado/salrioPerH"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//Empleado/nombre"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//Empleado/ID"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dmss_pa02.ecore#//Empleado/investiga"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//Empleado/total_employee_cost"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dmss_pa02.ecore#//Empleado/proyectinvst"/>
+    </genClasses>
+    <genClasses ecoreClass="dmss_pa02.ecore#//WorkPackage">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dmss_pa02.ecore#//WorkPackage/tarea"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//WorkPackage/titulo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//WorkPackage/ID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//WorkPackage/mes_inicio"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//WorkPackage/mes_fin"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dmss_pa02.ecore#//WorkPackage/equipment"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//WorkPackage/presupuesto"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//WorkPackage/duracion"/>
+    </genClasses>
+    <genClasses ecoreClass="dmss_pa02.ecore#//Tarea">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dmss_pa02.ecore#//Tarea/entreglable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//Tarea/presupuesto"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//Tarea/mes_fin"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//Tarea/ID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//Tarea/titulo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//Tarea/mes_inicio"/>
+    </genClasses>
+    <genClasses ecoreClass="dmss_pa02.ecore#//Entreglable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//Entreglable/ID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//Entreglable/mes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//Entreglable/tipo"/>
+    </genClasses>
+    <genClasses ecoreClass="dmss_pa02.ecore#//SME"/>
+    <genClasses ecoreClass="dmss_pa02.ecore#//NPO"/>
+    <genClasses ecoreClass="dmss_pa02.ecore#//LE"/>
+    <genClasses ecoreClass="dmss_pa02.ecore#//NP"/>
+    <genClasses ecoreClass="dmss_pa02.ecore#//TimeSheep">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dmss_pa02.ecore#//TimeSheep/mes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//TimeSheep/ano"/>
+    </genClasses>
+    <genClasses ecoreClass="dmss_pa02.ecore#//mes">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//mes/Identificador"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dmss_pa02.ecore#//mes/tareasrealizadas"/>
+    </genClasses>
+    <genClasses ecoreClass="dmss_pa02.ecore#//TareasRealizadas">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dmss_pa02.ecore#//TareasRealizadas/tarea"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//TareasRealizadas/horas"/>
+    </genClasses>
+    <genClasses ecoreClass="dmss_pa02.ecore#//Equipment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//Equipment/ID_equipamiento"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dmss_pa02.ecore#//Equipment/coste_equipamiento"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

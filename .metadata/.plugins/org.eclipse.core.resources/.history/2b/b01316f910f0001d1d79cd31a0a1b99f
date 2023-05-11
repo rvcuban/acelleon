@@ -1,0 +1,18 @@
+
+public class IPad {
+
+//-----------------
+// Instance variables
+ private float pulgadas;
+
+
+// Getters & setters aL
+
+			public float getPulgadas ( ){
+				return this. pulgadas;
+			}
+
+			public void setPulgadas ( float pulgadas){
+				this.pulgadas =pulgadas;
+        	}
+  }

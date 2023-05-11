@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/MyOwnJHipster/src" modelPluginID="MyOwnJHipster"
+    modelName="MyOwnJHipster" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>myOwnJHipster.ecore</foreignModel>
+  <genPackages prefix="MyOwnJHipster" disposableProviderFactory="true" ecorePackage="myOwnJHipster.ecore#/">
+    <genClasses ecoreClass="myOwnJHipster.ecore#//Aplicacion">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute myOwnJHipster.ecore#//Aplicacion/id_Aplicacion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute myOwnJHipster.ecore#//Aplicacion/nombre"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference myOwnJHipster.ecore#//Aplicacion/pantalla"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference myOwnJHipster.ecore#//Aplicacion/entidad"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference myOwnJHipster.ecore#//Aplicacion/rol"/>
+    </genClasses>
+    <genClasses ecoreClass="myOwnJHipster.ecore#//Pantalla">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute myOwnJHipster.ecore#//Pantalla/id_Pantalla"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute myOwnJHipster.ecore#//Pantalla/nombre"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference myOwnJHipster.ecore#//Pantalla/accede"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference myOwnJHipster.ecore#//Pantalla/redsocial"/>
+    </genClasses>
+    <genClasses ecoreClass="myOwnJHipster.ecore#//PantallaContenido">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference myOwnJHipster.ecore#//PantallaContenido/articulo"/>
+    </genClasses>
+    <genClasses ecoreClass="myOwnJHipster.ecore#//PantEncuestaCuestionario">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference myOwnJHipster.ecore#//PantEncuestaCuestionario/pregunta"/>
+    </genClasses>
+    <genClasses ecoreClass="myOwnJHipster.ecore#//PantallaFuncionalidad">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference myOwnJHipster.ecore#//PantallaFuncionalidad/actua_sobre"/>
+    </genClasses>
+    <genClasses ecoreClass="myOwnJHipster.ecore#//Detalles"/>
+    <genClasses ecoreClass="myOwnJHipster.ecore#//IndiceDetalles"/>
+    <genClasses ecoreClass="myOwnJHipster.ecore#//Actualizacion"/>
+    <genClasses ecoreClass="myOwnJHipster.ecore#//Borrado"/>
+    <genClasses ecoreClass="myOwnJHipster.ecore#//IndiceExtendido"/>
+    <genClasses ecoreClass="myOwnJHipster.ecore#//Indice"/>
+    <genClasses ecoreClass="myOwnJHipster.ecore#//Creacion"/>
+    <genClasses ecoreClass="myOwnJHipster.ecore#//Entidad">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute myOwnJHipster.ecore#//Entidad/id_Entidad"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute myOwnJHipster.ecore#//Entidad/nombre"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference myOwnJHipster.ecore#//Entidad/atributo"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference myOwnJHipster.ecore#//Entidad/controlada_en"/>
+    </genClasses>
+    <genClasses ecoreClass="myOwnJHipster.ecore#//Atributo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute myOwnJHipster.ecore#//Atributo/id_Atributo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute myOwnJHipster.ecore#//Atributo/nombre"/>
+    </genClasses>
+    <genClasses ecoreClass="myOwnJHipster.ecore#//Rol">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute myOwnJHipster.ecore#//Rol/id_Rol"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute myOwnJHipster.ecore#//Rol/nombre"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference myOwnJHipster.ecore#//Rol/accede_a"/>
+    </genClasses>
+    <genClasses ecoreClass="myOwnJHipster.ecore#//Pregunta">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute myOwnJHipster.ecore#//Pregunta/id_Pregunta"/>
+    </genClasses>
+    <genClasses ecoreClass="myOwnJHipster.ecore#//OpcionMultiple">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference myOwnJHipster.ecore#//OpcionMultiple/opcion"/>
+    </genClasses>
+    <genClasses ecoreClass="myOwnJHipster.ecore#//RespuestaCorta">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute myOwnJHipster.ecore#//RespuestaCorta/respuesta"/>
+    </genClasses>
+    <genClasses ecoreClass="myOwnJHipster.ecore#//VerdaderoFalso">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute myOwnJHipster.ecore#//VerdaderoFalso/respuesta"/>
+    </genClasses>
+    <genClasses ecoreClass="myOwnJHipster.ecore#//Opcion">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute myOwnJHipster.ecore#//Opcion/id_Opcion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute myOwnJHipster.ecore#//Opcion/respuesta"/>
+    </genClasses>
+    <genClasses ecoreClass="myOwnJHipster.ecore#//RedSocial">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute myOwnJHipster.ecore#//RedSocial/id_RedSocial"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute myOwnJHipster.ecore#//RedSocial/nombre"/>
+    </genClasses>
+    <genClasses ecoreClass="myOwnJHipster.ecore#//PantEncuesta">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference myOwnJHipster.ecore#//PantEncuesta/pantresultadosagregados"/>
+    </genClasses>
+    <genClasses ecoreClass="myOwnJHipster.ecore#//PantCuestionario">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference myOwnJHipster.ecore#//PantCuestionario/pantresultados"/>
+    </genClasses>
+    <genClasses ecoreClass="myOwnJHipster.ecore#//PantResultados"/>
+    <genClasses ecoreClass="myOwnJHipster.ecore#//PantResultadosAgregados"/>
+    <genClasses ecoreClass="myOwnJHipster.ecore#//Articulo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute myOwnJHipster.ecore#//Articulo/id_Articulo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute myOwnJHipster.ecore#//Articulo/titulo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute myOwnJHipster.ecore#//Articulo/texto"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

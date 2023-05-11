@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmss_pa02:SGP
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dmss_pa02="http://www.example.org/dmss_pa02"
+    xsi:schemaLocation="http://www.example.org/dmss_pa02 ../metamodel/dmss_pa02.ecore">
+  <proyectinvst
+      partner="//@partner.0"
+      acronimo="CROM"
+      titulo="CROMOSOMS INV"
+      mes_inicio="7"
+      mes_fin="1"
+      ano_ini="2002"
+      ano_fin="1999"
+      esIP="//@partner.0/@empleado.0"
+      coordinador="//@partner.0">
+    <workpackage>
+      <tarea
+          mes_fin="5"
+          titulo="Lean Startup"
+          mes_inicio="6">
+        <entreglable
+            ID="E1"
+            mes="2"/>
+      </tarea>
+      <equipment
+          ID_equipamiento="EQUI1"
+          coste_equipamiento="20.0"/>
+    </workpackage>
+  </proyectinvst>
+  <partner xsi:type="dmss_pa02:SME"
+      esCoordinadorde="//@proyectinvst.0"
+      acronimo="EmH"
+      nombre="Emphaty"
+      pais="España">
+    <empleado
+        salrioPerH="2"
+        nombre="Cristina "
+        ID="EM234"
+        investiga="//@proyectinvst.0"
+        proyectinvst="//@proyectinvst.0">
+      <timesheep
+          ano="1999">
+        <mes
+            Identificador="1">
+          <tareasrealizadas
+              horas="200"/>
+        </mes>
+        <mes
+            Identificador="1"/>
+      </timesheep>
+    </empleado>
+  </partner>
+</dmss_pa02:SGP>

@@ -1,0 +1,176 @@
+[comment encoding = UTF-8 /]
+[module generate('http://www.example.org/dmss_pa02')]
+
+
+[template public generateElement(aSGP : SGP)]
+[comment @main/]
+[file ('index.html', false, 'UTF-8')]
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+    	<meta charset="UTF-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    	<title>index</title>
+   
+	</head>
+	<body>
+  		<h1>[aSGP.nombreSistema/]</h1>
+   			<div class="listaOrganizaciones">
+   				 <ul>
+    			[for (partner:Partner| aSGP.partner)] 
+    		 	<li>[partner.nombre/]<a href="O_[partner.acronimo/].html">([partner.acronimo/])</a>- [partner.eClass().name/]([partner.pais/])</li>
+      
+     			
+				[/for]
+				</ul>
+   
+   				</div>
+				 
+
+	</body>
+</html>
+
+[/file]
+
+
+[for (proyecto:ProyectInvst| aSGP.proyectinvst)] 
+ [file ('P_'+proyecto.acronimo+'.html', false, 'UTF-8')]
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+    	<meta charset="UTF-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    		<title>[proyecto.acronimo/]</title>
+		</head>
+	<body>
+     <h1>Proyecto Investigacion:[proyecto.titulo/]([proyecto.acronimo/])</h1>
+ 	<div>
+  		<h2>Informacion del proyecto</h2>
+  			<ul>
+    			<p>Coordinador: [proyecto.esIP.nombre/]([proyecto.acronimo /])</p>
+    			<p>Fecha de inicio: [proyecto.mes_inicio/]/[proyecto.ano_ini/]</p>
+   				 <p>Fecha de finalizacion: [proyecto.mes_fin/]/[proyecto.ano_fin/]</p>
+   				 <p>Presupuesto:  €[proyecto.presupuesto/]</p>
+ 			 </ul>
+	</div>
+        <h2>Paquetes de trabajo</h2>
+	
+        [for(paquete:WorkPackage| proyecto.workpackage)]
+        <ul>
+				<li>[paquete.ID/]-[paquete.titulo/]([paquete.mes_inicio/]-[paquete.mes_fin/])</li>
+				
+                   [for(tarea:Tarea| paquete.tarea)]
+					 <ul>
+                          <li>[tarea.ID/]-[tarea.titulo/]</li>
+							
+                         	 [for(entregable:Entreglable| paquete.tarea.entreglable)]
+								 <ul>
+								<li> Entregable:[entregable.ID/]-[entregable.tipo/] Entrega en M[entregable.mes/]</li>
+							   </ul>
+								[/for]
+						<li>[paquete.equipment.ID_equipamiento/]</li>
+                      </ul>
+						
+				    [/for]
+            
+        </ul>
+        [/for]
+
+	</body>
+</html>
+
+ [/file]
+[/for]
+
+[for (empleado:Empleado| aSGP.partner.empleado)] 
+[file ('e_'+empleado.nombre+'.html', false, 'UTF-8')]
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+			<title>[empleado.nombre/]</title>
+	</head>
+	<body>
+	<h1>[empleado.nombre/]<a href="O_[empleado.eContainer().oclAsType(Partner).acronimo/].html">([empleado.eContainer().oclAsType(Partner).acronimo/])</a></h1>
+       <div>
+          <h2> Coordina:</h2> 
+			[for(project:ProyectInvst| empleado.investiga)]
+			 <ul>
+				<li>[project.titulo/]([project.acronimo/])</li>
+             </ul>
+			[/for]
+       </div>
+		<div>
+          <h2> Proyectos:</h2> 
+			[for(project:ProyectInvst| empleado.proyectinvst)]
+			 <ul>
+				<li>[project.titulo/]<a href="P_[project.acronimo/].html">([project.acronimo/])</a></li>
+             </ul>
+			[/for]
+       </div>
+
+ 	  <div>
+          <h2> Asignaciones:</h2> 
+			
+			[for(time:TimeSheep| empleado.timesheep)]
+             <ul>
+				<li>[time.ano/]
+
+    		        [for(tiempo:mes| time.mes)]
+ 							 <ul>
+							<li>M[tiempo.Identificador/]</li>
+								
+									[for(tarea:Tarea| tiempo.tareasrealizadas.tarea)]
+									<ul>
+									<li>[tarea.ID/]:[tarea.titulo/](time)-Proyecto:(<a href="P_[tarea.eContainer().eContainer().oclAsType(ProyectInvst).acronimo/].html">([tarea.eContainer().eContainer().oclAsType(ProyectInvst).acronimo/])</a>)</li>
+									</ul>
+									[/for]
+								
+                             </ul>
+							 [/for]
+             </ul>
+			[/for]
+       </div>
+
+
+	<body>
+</html>
+[/file]
+[/for]
+
+[for (partner:Partner| aSGP.partner)]
+[file ('O_'+partner.acronimo+'.html', false, 'UTF-8')]
+<!DOCTYPE html>
+		<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<title>[partner.acronimo/]</title>
+	</head>
+	<body>
+     <h1> [partner.nombre/]([partner.acronimo/]) </h1>
+		<h2>Proyectos de Investigación Coordinados por [partner.acronimo/]: </h2>
+         <ul>
+             [for(project:ProyectInvst| partner.empleado.investiga)]
+              <li>[project.titulo/]<a href="P_[project.acronimo/].html">([project.acronimo/])</a></li>
+            [/for]
+			  </ul>
+		<h2>Otros proyectos de investigación en los que participa [partner.acronimo/]: </h2>
+		 <ul>
+             [for(project:ProyectInvst| partner.proyectinvst)]
+              <li>[project.titulo/]<a href="P_[project.acronimo/].html">([project.acronimo/])</a></li>
+            [/for]
+		 </ul>
+
+		<h2>Empleados que trabajan en [partner.acronimo/]: </h2>
+         <ul>
+             [for(empleado:Empleado| partner.empleado)]
+              <li>[empleado.nombre/]<a href="e_[empleado.nombre/].html">([empleado.nombre/])</a></li>
+            [/for]
+		 </ul>
+	<body>
+</html>
+
+[/file]
+[/for]
+
+[/template]

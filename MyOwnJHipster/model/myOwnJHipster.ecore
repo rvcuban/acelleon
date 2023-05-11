@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="myOwnJHipster" nsURI="http://www.example.org/myOwnJHipster"
+    nsPrefix="myOwnJHipster">
+  <eClassifiers xsi:type="ecore:EClass" name="Aplicacion">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id_Aplicacion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nombre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pantalla" upperBound="-1"
+        eType="#//Pantalla" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entidad" upperBound="-1"
+        eType="#//Entidad" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rol" upperBound="-1" eType="#//Rol"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Pantalla" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id_Pantalla" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nombre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="accede" upperBound="-1"
+        eType="#//Rol" eOpposite="#//Rol/accede_a"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="redsocial" upperBound="-1"
+        eType="#//RedSocial" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PantallaContenido" eSuperTypes="#//Pantalla">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="articulo" lowerBound="1"
+        upperBound="-1" eType="#//Articulo" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PantEncuestaCuestionario" abstract="true"
+      eSuperTypes="#//Pantalla">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pregunta" upperBound="-1"
+        eType="#//Pregunta" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PantallaFuncionalidad" abstract="true"
+      eSuperTypes="#//Pantalla">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actua_sobre" lowerBound="1"
+        eType="#//Entidad" eOpposite="#//Entidad/controlada_en"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Detalles" eSuperTypes="#//PantallaFuncionalidad"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IndiceDetalles" eSuperTypes="#//PantallaFuncionalidad"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Actualizacion" eSuperTypes="#//PantallaFuncionalidad"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Borrado" eSuperTypes="#//PantallaFuncionalidad"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IndiceExtendido" eSuperTypes="#//PantallaFuncionalidad"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Indice" eSuperTypes="#//PantallaFuncionalidad"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Creacion" eSuperTypes="#//PantallaFuncionalidad"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Entidad">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id_Entidad" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nombre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="atributo" upperBound="-1"
+        eType="#//Atributo" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="controlada_en" upperBound="-1"
+        eType="#//PantallaFuncionalidad" eOpposite="#//PantallaFuncionalidad/actua_sobre"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Atributo">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id_Atributo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nombre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Rol">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id_Rol" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nombre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="accede_a" upperBound="-1"
+        eType="#//Pantalla" eOpposite="#//Pantalla/accede"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Pregunta" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id_Pregunta" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OpcionMultiple" eSuperTypes="#//Pregunta">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="opcion" lowerBound="2"
+        upperBound="4" eType="#//Opcion" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RespuestaCorta" eSuperTypes="#//Pregunta">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="respuesta" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VerdaderoFalso" eSuperTypes="#//Pregunta">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="respuesta" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Opcion">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id_Opcion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="respuesta" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RedSocial">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id_RedSocial" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nombre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PantEncuesta" eSuperTypes="#//PantEncuestaCuestionario">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pantresultadosagregados"
+        upperBound="-1" eType="#//PantResultadosAgregados" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PantCuestionario" eSuperTypes="#//PantEncuestaCuestionario">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pantresultados" upperBound="-1"
+        eType="#//PantResultados" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PantResultados"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PantResultadosAgregados"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Articulo">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id_Articulo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="titulo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="texto" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>

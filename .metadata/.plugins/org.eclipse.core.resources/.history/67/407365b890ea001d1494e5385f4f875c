@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<myOwnJHipster:Aplicacion
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:myOwnJHipster="http://www.example.org/myOwnJHipster"
+    xsi:schemaLocation="http://www.example.org/myOwnJHipster myOwnJHipster.ecore"
+    id_Aplicacion="Apple">
+  <pantalla
+      xsi:type="myOwnJHipster:PantallaContenido"
+      id_Pantalla="index_home"
+      nombre="Apple"
+      accede="Administrador Usuario">
+    <articulo
+        id_Articulo="articulo_home"
+        titulo="Historia de Apple"
+        texto="Apple es una de las compañías más innovadoras y exitosas en la historia de la tecnología. Fundada en 1976 por Steve Jobs, Steve Wozniak y Ronald Wayne, la compañía ha lanzado una serie de productos icónicos que han revolucionado la forma en que interactuamos con la tecnología, desde la computadora personal hasta el teléfono inteligente."/>
+  </pantalla>
+  <pantalla
+      xsi:type="myOwnJHipster:PantallaContenido"
+      id_Pantalla="quienes_somos"
+      nombre="Sobre Nosotros"
+      accede="Administrador Usuario">
+    <articulo
+        id_Articulo="nosotros"
+        titulo="¿Quiénes somos?"
+        texto="Apple Inc. fue fundada en 1976 por Steve Jobs, Steve Wozniak y Ronald Wayne. Lanzó su primer producto, la computadora Apple I, en ese mismo año. La introducción de la Macintosh en 1984 estableció la compañía como líder en la industria de la tecnología. A lo largo de los años, Apple ha lanzado una serie de productos icónicos, incluyendo el iPod, iPhone, iPad y Apple Watch. Hoy en día, Apple es una de las compañías más valiosas del mundo, con una amplia base de usuarios leales y una reputación de innovación y diseño de alta calidad."/>
+  </pantalla>
+  <pantalla
+      xsi:type="myOwnJHipster:Creacion"
+      id_Pantalla="creacion_iphone"
+      accede="Administrador"
+      actua_sobre="iPhone"/>
+  <pantalla
+      xsi:type="myOwnJHipster:Indice"
+      id_Pantalla="indice_iphone"
+      nombre=""
+      accede="Administrador"
+      actua_sobre="iPhone"/>
+  <pantalla
+      xsi:type="myOwnJHipster:IndiceExtendido"
+      id_Pantalla="ind_extendido_iphone"
+      accede="Administrador"
+      actua_sobre="iPhone"/>
+  <pantalla
+      xsi:type="myOwnJHipster:Detalles"
+      id_Pantalla="detalles_iphone"
+      accede="Administrador"
+      actua_sobre="iPhone"/>
+  <pantalla
+      xsi:type="myOwnJHipster:IndiceDetalles"
+      id_Pantalla="ind_detalles_iphone"
+      accede="Administrador"
+      actua_sobre="iPhone"/>
+  <pantalla
+      xsi:type="myOwnJHipster:Actualizacion"
+      id_Pantalla="actualizacion_iphone"
+      accede="Administrador"
+      actua_sobre="iPhone"/>
+  <pantalla
+      xsi:type="myOwnJHipster:Borrado"
+      id_Pantalla="borrado_iphone"
+      accede="Administrador"
+      actua_sobre="iPhone"/>
+  <pantalla
+      xsi:type="myOwnJHipster:PantEncuesta"
+      id_Pantalla="encuesta_consumidor"
+      nombre="Emcuesta Consumidor"
+      accede="Administrador Usuario">
+    <pregunta
+        xsi:type="myOwnJHipster:RespuestaCorta"
+        id_Pregunta="Cuantos Años tienes"
+        respuesta="la edad minima debe ser de 18 anos"/>
+    <pregunta
+        xsi:type="myOwnJHipster:RespuestaCorta"
+        id_Pregunta="Cuanto dinero tienes?"
+        respuesta="100k"/>
+    <pregunta
+        xsi:type="myOwnJHipster:VerdaderoFalso"
+        id_Pregunta="Andoid es mejor que IPhone?"/>
+    <pregunta
+        xsi:type="myOwnJHipster:OpcionMultiple"
+        id_Pregunta="Cual de estos siginifica lo mismo que Bounjour">
+      <opcion
+          id_Opcion="Hola"/>
+      <opcion
+          id_Opcion="Hello"/>
+      <opcion
+          id_Opcion="Bye"
+          respuesta=""/>
+    </pregunta>
+  </pantalla>
+  <entidad id_Entidad="iPhone"
+      controlada_en="creacion_iphone indice_iphone ind_extendido_iphone detalles_iphone ind_detalles_iphone actualizacion_iphone borrado_iphone">
+    <atributo
+        id_Atributo="color"/>
+  </entidad>
+  <entidad id_Entidad="iPad">
+    <atributo
+        id_Atributo="pulgadas"
+        nombre=""/>
+  </entidad>
+  <entidad id_Entidad="iMac">
+    <atributo
+        id_Atributo="nucleos"/>
+  </entidad>
+  <rol id_Rol="Administrador"
+      nombre="Javier Rodriguez Verdecia"
+      accede_a="index_home borrado_iphone actualizacion_iphone ind_detalles_iphone detalles_iphone ind_extendido_iphone indice_iphone creacion_iphone quienes_somos encuesta_consumidor"/>
+  <rol id_Rol="Usuario"
+      accede_a="index_home quienes_somos encuesta_consumidor"/>
+</myOwnJHipster:Aplicacion>

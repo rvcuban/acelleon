@@ -1,0 +1,52 @@
+[comment encoding = UTF-8 /]
+[module generate('http://www.example.org/myOwnJHipster')]
+
+
+[template public generateAplicacion(aAplicacion : Aplicacion)]
+[comment @main/]
+
+[for (aClass:Entidad | aAplicacion.entidad)]
+
+[file (aClass.name.toUpperFirst()+'-Java’, false, 'UTF-8')]
+public class [aClass.name.toUpperFirst()/] {
+
+//-----------------
+// Instance variables
+[for (anattribute:attribute | aClass.attributes)]
+ private [anAttribute.type/] [anattribute.name/];
+[/for]
+
+
+// Getters & setters aL
+
+[for (andttribute:attribute | aClass.attributes)]
+		public [anttribute.type/] get[anattribute.name.toUpperFirst()/] ( ){
+			return this. [anattribute.name/];
+			}
+
+		public void set[anAttribute.name.topperFirst()/] ( [anAttribute.type/] [anAtribute.name/]){
+		this.[anAtribute.name/] =anAtribute.name/];
+        }
+[/for]
+
+[/file]
+[/for]
+[/template]
+
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
